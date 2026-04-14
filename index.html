@@ -1030,11 +1030,8 @@ var selcat='all',qcount=50,qs=[],cur=0,sc=0,wr=0,tmrInt,tleft=30,done=false;
 function selCat(el,cat){document.querySelectorAll('.cat-item').forEach(function(c){c.classList.remove('sel');});el.classList.add('sel');selcat=cat;}
 function selCount(el,n){document.querySelectorAll('.qcbtn').forEach(function(b){b.classList.remove('sel');});el.classList.add('sel');qcount=n;}
 function shuf(a){
-  // Fisher-Yates with time-based extra randomness
-  var seed=Date.now();
   for(var i=a.length-1;i>0;i--){
-    seed=(seed*1664525+1013904223)&0xffffffff;
-    var j=((seed>>>0)%(i+1));
+    var j=Math.floor(Math.random()*(i+1));
     var t=a[i];a[i]=a[j];a[j]=t;
   }
   return a;
